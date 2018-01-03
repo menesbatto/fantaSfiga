@@ -21,8 +21,8 @@ public class Main {
 		AppConstants.FAST_MODE_ACTIVE = true;
 		
 		// Scarica voti
-		Map<VotesSourceEnum, Map<String, Map<String, List<PlayerVoteComplete>>>> votes = MainSeasonVotesDowloader.execute();
-//		Map<VotesSourceEnum, Map<String, Map<String, List<PlayerVoteComplete>>>> votes = null;
+//		Map<VotesSourceEnum, Map<String, Map<String, List<PlayerVoteComplete>>>> votes = MainSeasonVotesDowloader.execute();
+		Map<VotesSourceEnum, Map<String, Map<String, List<PlayerVoteComplete>>>> votes = null;
 		
 		// Scarica le formazioni schierate, associa i voti scaricati precedentemente,
 		// controlla differenze tra i voti delle formazioni schierate e i voti scaricati

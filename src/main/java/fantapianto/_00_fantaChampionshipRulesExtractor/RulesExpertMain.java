@@ -397,6 +397,7 @@ public class RulesExpertMain {
 		for (; i < 15; i++){
 			goalPoints.add(goalPoints.get(i) + lastRange);
 		}
+//		List<Double> GOAL_POINTS = Arrays.asList(66.0, 72.0, 78.0, 84.0, 90.0, 96.0, 102.0, 108.0, 114.0);
 		p.setGoalPoints(goalPoints);
 		
 		String formulaUnoPointsString = doc.getElementsMatchingOwnText("Numero posizioni Formula 1:").parents().get(0).select("input").val();

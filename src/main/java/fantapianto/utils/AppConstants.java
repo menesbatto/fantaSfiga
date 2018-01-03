@@ -20,6 +20,7 @@ public class AppConstants {
 	public static boolean FAST_MODE_ACTIVE = false;
 	public static Boolean FORCE_INVERT_HOME_AWAY = false;
 	public static Boolean FORCE_WINNING_FOR_DISTANCE = false;
+	public static Double FORCE_WINNING_FOR_DISTANCE_POINTS = 1.0;
 	
 	public static VotesSourceEnum FORCE_VOTE_SOURCE = null;//VotesSourceEnum.NAPOLI;
 	public static Boolean FORCE_GOALKEEPER_MODIFIER_DISABLED = false;

@@ -35,45 +35,49 @@ public class MatchExecutor {
 		
 		// Modificatore difesa
 		if (rules.getModifiers().isGoalkeeperModifierActive()){
-			Double homeVarGoalkeeper = homeTeamResult.getGoalkeeperModifier();
-			Double awayVarGoalkeeper = awayTeamResult.getGoalkeeperModifier();
-			homeSumTotalPoints += awayVarGoalkeeper;
-			awaySumTotalPoints += homeVarGoalkeeper;
+			if (!AppConstants.FORCE_GOALKEEPER_MODIFIER_DISABLED){
+				Double homeVarGoalkeeper = homeTeamResult.getGoalkeeperModifier();
+				Double awayVarGoalkeeper = awayTeamResult.getGoalkeeperModifier();
+				homeSumTotalPoints += awayVarGoalkeeper;
+				awaySumTotalPoints += homeVarGoalkeeper;
+			}
 		}
 		
 		// Modificatore centrocampo
 		if (rules.getModifiers().isMiddlefielderModifierActive()){
-			Double homeVarMid = homeTeamResult.getMiddlefieldersVariation();
-			Double awayVarMid = awayTeamResult.getMiddlefieldersVariation();
-			Double varMid = homeVarMid - awayVarMid;
-			
-			if (varMid <= -2 || varMid >= 2){
-				if (varMid >= 8){
-					homeSumTotalPoints += 4;
-					awaySumTotalPoints -= 4;
-				} else if (varMid >= 6) {
-					homeSumTotalPoints += 3;
-					awaySumTotalPoints -= 3;
-				} else if (varMid >= 4) {
-					homeSumTotalPoints += 2;
-					awaySumTotalPoints -= 2;
-				} else if (varMid >= 2) {
-					homeSumTotalPoints += 1;
-					awaySumTotalPoints -= 1;
-				} else if (varMid <= -8) {
-					homeSumTotalPoints -= 4;
-					awaySumTotalPoints += 4;
-				} else if (varMid <= -6) {
-					homeSumTotalPoints -= 3;
-					awaySumTotalPoints += 3;
-				} else if (varMid <= -4) {
-					homeSumTotalPoints -= 2;
-					awaySumTotalPoints += 2;
-				} else if (varMid <= -2) {
-					homeSumTotalPoints -= 1;
-					awaySumTotalPoints += 1;
-				} else {
-					System.out.println("C'e' un errore");
+			if (!AppConstants.FORCE_GOALKEEPER_MODIFIER_DISABLED){
+				Double homeVarMid = homeTeamResult.getMiddlefieldersVariation();
+				Double awayVarMid = awayTeamResult.getMiddlefieldersVariation();
+				Double varMid = homeVarMid - awayVarMid;
+				
+				if (varMid <= -2 || varMid >= 2){
+					if (varMid >= 8){
+						homeSumTotalPoints += 4;
+						awaySumTotalPoints -= 4;
+					} else if (varMid >= 6) {
+						homeSumTotalPoints += 3;
+						awaySumTotalPoints -= 3;
+					} else if (varMid >= 4) {
+						homeSumTotalPoints += 2;
+						awaySumTotalPoints -= 2;
+					} else if (varMid >= 2) {
+						homeSumTotalPoints += 1;
+						awaySumTotalPoints -= 1;
+					} else if (varMid <= -8) {
+						homeSumTotalPoints -= 4;
+						awaySumTotalPoints += 4;
+					} else if (varMid <= -6) {
+						homeSumTotalPoints -= 3;
+						awaySumTotalPoints += 3;
+					} else if (varMid <= -4) {
+						homeSumTotalPoints -= 2;
+						awaySumTotalPoints += 2;
+					} else if (varMid <= -2) {
+						homeSumTotalPoints -= 1;
+						awaySumTotalPoints += 1;
+					} else {
+						System.out.println("C'e' un errore");
+					}
 				}
 			}
 		}
@@ -95,7 +99,7 @@ public class MatchExecutor {
 
 		if (AppConstants.FORCE_WINNING_FOR_DISTANCE){
 			Double difference = homeSumTotalPoints - awaySumTotalPoints;
-			if (difference < 2 &&  difference > -2){
+			if (difference < AppConstants.FORCE_WINNING_FOR_DISTANCE_POINTS &&  difference > -AppConstants.FORCE_WINNING_FOR_DISTANCE_POINTS){
 				if (homeTeamGoals>awayTeamGoals)
 					awayTeamGoals= homeTeamGoals;
 				else 
